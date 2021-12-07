@@ -1,0 +1,39 @@
+(function($){
+	
+	var scrollTo = function(element) {
+		$('html, body').animate({ scrollTop: element.offset().top - -25 }, 500);	
+	};
+   
+	$('.cta, a.cta').click(function(e) {
+		scrollTo($($(this).attr('href')));
+		return false;
+	});
+	
+	$(window).scroll( function(){
+		if($(window).scrollTop()>500){
+			$("body").addClass("thin-header");
+		} else {
+			$("body").removeClass("thin-header");
+		}
+	});
+
+    //Verifica se a Janela está no topo
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 150) {
+            $('.scrollToTop').fadeIn();
+        } else {
+            $('.scrollToTop').fadeOut();
+        }
+    });
+
+    //Onde a mágia acontece! rs
+    $('.scrollToTop').click(function(){
+		$('body,html').animate({ scrollTop: 0 }, 500 );
+        return false;
+    });
+
+	$('.faq-title').click(function(){
+		$(this).next().slideToggle();
+	});
+
+})( jQuery );
